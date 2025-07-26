@@ -9,7 +9,6 @@ import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
 import {searchSubtitles, parseToVTT} from "wyzie-lib";
 import Toast from "react-bootstrap/Toast";
 import ToastContainer from "react-bootstrap/ToastContainer";
-import { set } from "lodash";
 
 function Download(props){
    const [movie,setMovie] = useState({
@@ -34,7 +33,7 @@ function Download(props){
         try {
             event.preventDefault();
             setMsg("Searching...");   
-            var res = await axios.post("http://localhost:5000/searchIMDB", movie);
+            var res = await axios.post("https://sub-easy-server.vercel.app/searchIMDB", movie);
             if(res.data.Response === "True"){
                 var subs = await searchSubtitles({imdb_id: res.data.imdbID});
                 setMsg("");
