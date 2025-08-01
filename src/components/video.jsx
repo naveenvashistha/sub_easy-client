@@ -92,7 +92,7 @@ function Video(){
       window.getSelection().removeAllRanges();
       console.log(str);
       if (str.split(" ").length === 1 && str.split(" ")[0] !== ""){
-         axios.get('https://api.dictionaryapi.dev/api/v2/entries/en/'+ str)
+         axios.get('https://api.dictionaryapi.dev/api/v2/entries/en/'+ str, {timeout: 5000})
          .then(results=>{
              setwordMeaning(results.data[0].meanings[0].definitions[0].definition);
              setShow(true);
